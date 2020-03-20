@@ -4,12 +4,12 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        used={}
-        maxlen = start = 0
-        for ind,char in enumerate(s):
-            if char in used and start<=used[char]:
-                start = used[char]+1
+        seen={}
+        longlen = pointer = 0
+        for index,char in enumerate(s):
+            if char in seen and pointer<=seen[char]:
+                pointer=seen[char]+1
             else:
-                maxlen = max(maxlen,ind-start+1)
-            used[char]=ind
-        return maxlen
+                longlen=max(longlen,index-pointer+1)
+            seen[char]=index
+        return longlen
